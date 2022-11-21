@@ -1,7 +1,9 @@
 
 async function search(input, modelplayer, options) {
     if (input && Number(input) == input) {
-        const playerfound = await modelplayer.findOne({ id: parseInt(input) });
+              const playerfound = await modelplayer.paginate({
+            id: parseInt(input)
+        }, options)
         return playerfound
     } else if (input) {
         return await modelplayer.paginate({
